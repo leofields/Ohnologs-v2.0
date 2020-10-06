@@ -3,7 +3,7 @@
   deps:
   - path: 1_All_Genes/1_get_biomaRt_GeneAttribute_files.R
     md5: 1831f4a4a674f1a1c6b976990fcd42fd
-  - path: species.txt
+  - path: 0_Organisms/species.txt
     md5: abb45641dc620729ce2e11ab39001fb4
   outs:
   - path: 1_All_Genes/1_BioMart_gene_attributes/
@@ -13,7 +13,7 @@
   deps:
   - path: 1_All_Genes/2_get_biomaRt_GO_files.R
     md5: 01323996631ffeb43c2cad742a3afdbf
-  - path: species.txt
+  - path: 0_Organisms/species.txt
     md5: abb45641dc620729ce2e11ab39001fb4
   outs:
   - path: 1_All_Genes/2_BioMart_GO_attributes
