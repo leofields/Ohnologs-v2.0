@@ -38,6 +38,7 @@ OhnologsForNfur
 *.zip
 
 *.Rhistory
+*.Renviron
 
 # DVC-tracked folders #
 #################

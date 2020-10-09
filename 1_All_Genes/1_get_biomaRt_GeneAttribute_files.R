@@ -1,12 +1,12 @@
 # read organism names
-org = readLines("species.txt")
+org = readLines("0_Organisms/species.txt")
 #org = readLines("speciestest.txt")
 
 # define a filename tag
 tag = "_biomaRt_v101.txt"
 
 # output dir
-output = "1_BioMart_gene_attributes"
+output = "1_All_Genes/1_BioMart_gene_attributes"
 if(!dir.exists(output))
     dir.create(output)
 
@@ -40,7 +40,7 @@ attr = c("ensembl_gene_id", "strand", "chromosome_name", "external_gene_name", "
 # for all organisms
 
 for (i in 1:length(org)){
-	
+	print(org[i])
 	# load ensembl biomart in a variable named ensembl
 	# if the organism is sea urchin  - use ensembl metazoa biomart
 	
@@ -62,8 +62,8 @@ for (i in 1:length(org)){
   
 	write.table(var, file = filename, sep ="\t", quote=F, row.names = F)
 	
-  rm("ensembl", "filename", "var") # remove some variables for the next run
+	rm("ensembl", "filename", "var") # remove some variables for the next run
   
-	print(org[i])
+	print("DONE")
 	
 }
