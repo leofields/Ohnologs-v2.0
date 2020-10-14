@@ -6,9 +6,9 @@ org = readLines("species.txt")
 tag = "_biomaRt_v101.txt"
 
 # output dir
-output = "1_BioMart_gene_attributes"
-if(!dir.exists(output))
-    dir.create(output)
+outputdir = "1_BioMart_gene_attributes"
+if(!dir.exists(outputdir))
+    dir.create(outputdir)
 
 # load biomart libraray
 library("biomaRt")
@@ -40,7 +40,7 @@ attr = c("ensembl_gene_id", "strand", "chromosome_name", "external_gene_name", "
 # for all organisms
 
 for (i in 1:length(org)){
-	
+	print(org[i])
 	# load ensembl biomart in a variable named ensembl
 	# if the organism is sea urchin  - use ensembl metazoa biomart
 	
@@ -55,15 +55,15 @@ for (i in 1:length(org)){
 	
 	# generate file name
 
-	filename = paste(output, "/", org[i], tag, sep = "")
+	filename = paste(outputdir, "/", org[i], tag, sep = "")
 	
 	# var = getBM(attributes = attr, filters = 'biotype', values = 'protein_coding', mart = ensembl) # Earlier I was filtering PC genes, now I am not
 	var = getBM(attributes = attr, mart = ensembl)
   
 	write.table(var, file = filename, sep ="\t", quote=F, row.names = F)
 	
-  rm("ensembl", "filename", "var") # remove some variables for the next run
+	rm("ensembl", "filename", "var") # remove some variables for the next run
   
-	print(org[i])
+	print("DONE")
 	
 }

@@ -6,9 +6,9 @@ org = readLines("species.txt")
 tag = "_GO_v101.txt"
 
 # output dir
-output = "2_BioMart_GO_attributes"
-if(!dir.exists(output))
-    dir.create(output)
+outputdir = "2_BioMart_GO_attributes"
+if(!dir.exists(outputdir))
+    dir.create(outputdir)
 
 # load biomart libraray
 library("biomaRt")
@@ -41,7 +41,7 @@ attr = c("ensembl_gene_id", "external_gene_name", "go_id", "name_1006")
 # for all organisms
 
 for (i in 1:length(org)){
-	
+	print (org[i])
 	# load ensembl biomart in a variable named ensembl
 	# if the organism is sea urchin  - use ensembl metazoa biomart
 	
@@ -57,18 +57,20 @@ for (i in 1:length(org)){
 	}
 	
 	# generate file name
-	filename = paste(output, "/", org[i], tag, sep = "")
+	filename = paste(outputdir, "/", org[i], tag, sep = "")
 	
 	# Getting first the gene ids to pass as filters in the main query. This avoids the 5 minutes timeout for big queries
+	print ("Obtaining ensembl gene IDs...")
 	all_gene_ids <- getBM(attributes = c("ensembl_gene_id"), mart = ensembl)
 
+	print ("Obtaining attributes...")
 	# var = getBM(attributes = attr, filters = 'biotype', values = 'protein_coding', mart = ensembl) # Earlier I was filtering PC genes, now I am not
 	var = getBM(attributes = attr, filters = "ensembl_gene_id", values = all_gene_ids, mart = ensembl)
   
 	write.table(var, file = filename, sep ="\t", quote=F, row.names = F)
 	
-  rm("ensembl", "filename", "var") # remove some variables for the next run
+  	rm("ensembl", "filename", "var") # remove some variables for the next run
   
-	print (org[i])
+	print ("DONE")
 	
 }

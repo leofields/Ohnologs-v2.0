@@ -50,14 +50,14 @@ my %Chrs = (
 foreach (<1_BioMart_gene_attributes\/*.txt>){
 
 	my $infile = $_;
-	#print "$_\n";
+	print "Input:$_\n";
 	
-	$_=~/\/(.+)_gene_ensembl_biomaRt_v101\.txt/g;
+	$_=~/1_BioMart_gene_attributes\/(.+)_gene_ensembl_biomaRt_v101\.txt/g;
 	my $organism = $1;
 		
 #	if ($organism eq 'cjacchus'){ # test for one organism
 	
-	print "$organism\n";
+	print "Organism:$organism\n";
 	
 	# output directory
 	my $directory = "3_Prepare_final_gene_files_all-scaffolds";
@@ -67,7 +67,7 @@ foreach (<1_BioMart_gene_attributes\/*.txt>){
         die "Unable to create $directory\n";
     }
 
-	my $outfile = $directory."\/AllGenes_".$organism."_Ens84.txt";
+	my $outfile = $directory."\/AllGenes_".$organism."_Ens101.txt";
 	
 	# Open the organism file downloaded from bio_mart
 	open FH, $infile or die $!;
