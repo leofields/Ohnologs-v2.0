@@ -1,5 +1,5 @@
 # read organism names
-org = readLines("species.txt")
+org = readLines("0_Organisms/species.txt")
 #org = readLines("speciestest.txt")
 
 # define a filename tag

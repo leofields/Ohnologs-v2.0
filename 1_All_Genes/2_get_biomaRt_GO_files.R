@@ -1,5 +1,8 @@
+Sys.setenv(http_proxy='http://proxyp.curie.fr:3128')
+Sys.setenv(https_proxy='http://proxyp.curie.fr:3128')
+
 # read organism names
-org = readLines("species.txt")
+org = readLines("0_Organisms/species.txt")
 #org = readLines("speciestest.txt")
 
 # define a filename tag

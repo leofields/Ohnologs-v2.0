@@ -47,7 +47,7 @@ my %Chrs = (
 );
 
 
-foreach (<1_BioMart_gene_attributes\/*.txt>){
+foreach (<1_All_Genes\/1_BioMart_gene_attributes\/*.txt>){
 
 	my $infile = $_;
 	print "Input:$_\n";
@@ -60,7 +60,7 @@ foreach (<1_BioMart_gene_attributes\/*.txt>){
 	print "Organism:$organism\n";
 	
 	# output directory
-	my $directory = "3_Prepare_final_gene_files_all-scaffolds";
+	my $directory = "1_All_Genes\/3_Prepare_final_gene_files_all-scaffolds";
 
 	# created if not exists
 	unless(-e $directory or mkdir $directory) {
@@ -105,7 +105,7 @@ foreach (<1_BioMart_gene_attributes\/*.txt>){
 	
 	
 	# Open the GO file for this organism
-	open GO, "2_BioMart_GO_attributes\/$organism\_gene_ensembl_GO_v101.txt" or die $!;
+	open GO, "1_All_Genes\/2_BioMart_GO_attributes\/$organism\_gene_ensembl_GO_v101.txt" or die $!;
 	my @gofile = <GO>;
 	close (GO);
 	my $goheader = shift @file;
