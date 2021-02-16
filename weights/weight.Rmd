@@ -1,0 +1,44 @@
+---
+title: "Weighting phylogenetically related species"
+output: html_notebook
+---
+
+
+
+```{r}
+source("weights/weighting_scheme.R")
+library(ggtree)
+```
+
+Input file:
+```{r}
+phylotree <- read.newick(file = "weights/ensembl_validated.nwk")
+tips <- phylotree[["tip.label"]]
+timetree <- as_tibble(phylotree)
+
+```
+Calculating the weights
+```{r}
+spw <- calculate_weights(timetree = timetree, tips = tips)
+sum(spw)
+```
+
+Ploting the phylo tree
+
+```{r}
+df <- as.data.frame(spw)
+df$label <- paste0("[", round(df$V1, 4), "] ", rownames(df))
+
+phylotree[["tip.label"]] <- df$label
+
+ggtree(phylotree) + geom_tiplab(offset = 0, as_ylab = T, color='firebrick')
+```
+
+
+
+
+
+```{r}
+timetree[order(timetree$branch.length, decreasing = T),]
+```
+

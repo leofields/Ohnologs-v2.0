@@ -39,6 +39,7 @@ OhnologsForNfur
 
 *.Rhistory
 *.Renviron
+*.Rproj
 
 # DVC-tracked folders #
 #################
@@ -46,3 +47,5 @@ OhnologsForNfur
 1_All_Genes/2_BioMart_GO_attributes
 1_All_Genes/3_Prepare_final_gene_files_all-scaffolds
 2_Paralogs/1_Paralogs_from_7_latest_versions
+.Rproj.user
+.Rproj
