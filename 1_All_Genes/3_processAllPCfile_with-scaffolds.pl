@@ -52,7 +52,7 @@ foreach (<1_All_Genes\/1_BioMart_gene_attributes\/*.txt>){
 	my $infile = $_;
 	print "Input:$_\n";
 	
-	$_=~/1_All_Genes\/1_BioMart_gene_attributes\/(.+)_gene_ensembl_biomaRt_v101\.txt/g;
+	$_=~/1_BioMart_gene_attributes\/(.+)_gene_ensembl_biomaRt_v101\.txt/g;
 	my $organism = $1;
 		
 #	if ($organism eq 'cjacchus'){ # test for one organism

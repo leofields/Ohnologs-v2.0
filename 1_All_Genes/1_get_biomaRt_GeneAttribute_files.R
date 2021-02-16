@@ -6,9 +6,9 @@ org = readLines("0_Organisms/species.txt")
 tag = "_biomaRt_v101.txt"
 
 # output dir
-output = "1_All_Genes/1_BioMart_gene_attributes"
-if(!dir.exists(output))
-    dir.create(output)
+outputdir = "1_BioMart_gene_attributes"
+if(!dir.exists(outputdir))
+    dir.create(outputdir)
 
 # load biomart libraray
 library("biomaRt")
@@ -55,7 +55,7 @@ for (i in 1:length(org)){
 	
 	# generate file name
 
-	filename = paste(output, "/", org[i], tag, sep = "")
+	filename = paste(outputdir, "/", org[i], tag, sep = "")
 	
 	# var = getBM(attributes = attr, filters = 'biotype', values = 'protein_coding', mart = ensembl) # Earlier I was filtering PC genes, now I am not
 	var = getBM(attributes = attr, mart = ensembl)

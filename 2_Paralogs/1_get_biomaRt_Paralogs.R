@@ -1,14 +1,14 @@
 # Get paralogs for all the species in the database using BioMart
 
 # output dir
-output = "2_Paralogs/1_Paralogs_from_7_latest_versions"
-if(!dir.exists(output))
-    dir.create(output)
+outputdir = "1_Paralogs_from_7_latest_versions"
+if(!dir.exists(outputdir))
+    dir.create(outputdir)
 
 # read organism names
 org = readLines("species.txt")
 
-versions = readLines("2_Paralogs/ensembl_versions_95-101.txt")
+versions = readLines("ensembl_versions_95-101.txt")
 
 # load biomart libraray
 library("biomaRt")
@@ -45,7 +45,7 @@ for (i in 1:length(org)){ # foreach organism
   	
   	# generate file name
   	filename = paste(org[i], versions[j], sep = "_")
-  	filename = paste(output, filename, sep="/")
+  	filename = paste(outputdir, filename, sep="/")
   	filename = gsub(".org", ".txt", filename)
     
     # Get the attributes that I want to get for this organism

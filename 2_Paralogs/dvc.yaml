@@ -1,0 +1,9 @@
+stages:
+  1_get_biomaRt_Paralogs:
+    cmd: Rscript 1_get_biomaRt_Paralogs.R
+    deps:
+    - 1_get_biomaRt_Paralogs.R
+    - ensembl_versions_95-101.txt
+    - species.txt
+    outs:
+    - 1_Paralogs_from_7_latest_versions/

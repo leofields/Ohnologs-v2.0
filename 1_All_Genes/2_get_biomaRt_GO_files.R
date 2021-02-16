@@ -9,9 +9,9 @@ org = readLines("0_Organisms/species.txt")
 tag = "_GO_v101.txt"
 
 # output dir
-output = "1_All_Genes/2_BioMart_GO_attributes"
-if(!dir.exists(output))
-    dir.create(output)
+outputdir = "2_BioMart_GO_attributes"
+if(!dir.exists(outputdir))
+    dir.create(outputdir)
 
 # load biomart libraray
 library("biomaRt")
@@ -60,7 +60,7 @@ for (i in 1:length(org)){
 	}
 	
 	# generate file name
-	filename = paste(output, "/", org[i], tag, sep = "")
+	filename = paste(outputdir, "/", org[i], tag, sep = "")
 	
 	# Getting first the gene ids to pass as filters in the main query. This avoids the 5 minutes timeout for big queries
 	print ("Obtaining ensembl gene IDs...")
